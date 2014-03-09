@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309173049) do
+ActiveRecord::Schema.define(version: 20140309175957) do
+
+  create_table "gamification_scorings", force: true do |t|
+    t.integer  "task_id"
+    t.integer  "subjectable_id"
+    t.string   "subjectable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gamification_scorings", ["subjectable_id", "subjectable_type"], name: "index_gamification_scorings_on_subjectable"
+  add_index "gamification_scorings", ["task_id"], name: "index_gamification_scorings_on_task_id"
 
   create_table "gamification_tasks", force: true do |t|
     t.integer  "taskable_id"

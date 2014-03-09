@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Gamification
   describe Task do
-    let(:subject) { mock }
+    let(:subject) { double }
     let(:task) { create :gamification_task }
 
     describe '#completed_by?' do

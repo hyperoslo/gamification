@@ -29,7 +29,8 @@ Run the migrations:
 
 ## Usage
 
-Gamification really only has two models: `Task` and `Scoring`.
+Gamification really only has two models: `Task` and `Scoring`. A task has many scorings and a scoring has one task.
+The rest is up to you.
 
 ```ruby
 class Task
@@ -43,8 +44,7 @@ class Scoring
 end
 ```
 
-A task's `taskable` can be anything. For example, imagine that you wanted to reward users for reading
-articles.
+For example, imagine that you want to reward your users for reading articles on your site.
 
 ```ruby
 # app/models/user.rb

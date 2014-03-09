@@ -51,5 +51,19 @@ module Gamification
         end
       end
     end
+
+    describe '.complete_for' do
+      let!(:tasks) { create_list :gamification_task, 3 }
+
+      before do
+        expect(Scoring).to receive(:find_by).and_return(Scoring.new).once
+        expect(Scoring).to receive(:find_by).and_raise(ActiveRecord::RecordNotFound).at_least(:once)
+        expect(Scoring).to receive(:create!).and_return(Scoring.new).at_least(:once)
+      end
+
+      it 'creates scorings for tasks that were completed' do
+        expect(Task.complete_for(subject).count).to eq 2
+      end
+    end
   end
 end

@@ -62,9 +62,7 @@ class ArticlesController < AppliationController
   def read
     article = Article.find params[:id]
 
-    article.tasks.each do |task|
-      task.complete_for current_user unless task.completed_by? current_user
-    end
+    article.tasks.complete_for current_user
 
     redirect_to :back
   end

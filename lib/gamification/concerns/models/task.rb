@@ -38,4 +38,13 @@ module Gamification::Concerns::Models::Task
 
     class Completed < StandardError; end
   end
+
+  module ClassMethods
+    # Complete all tasks for the given subject.
+    #
+    # subject - An ActiveRecord model that can receive scorings.
+    def complete_for subject
+      all.map { |task| task.complete_for subject unless task.completed_by? subject }.compact
+    end
+  end
 end

@@ -29,8 +29,8 @@ Run the migrations:
 
 ## Usage
 
-Gamification really only has two models: `Task` and `Scoring`. A task has many scorings and a scoring has one task.
-The rest is up to you.
+Gamification really only has two models: `Task` and `Scoring`. A task has many scorings and a
+scoring belongs to a task. The rest is up to you.
 
 ```ruby
 class Task

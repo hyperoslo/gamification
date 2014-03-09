@@ -49,12 +49,12 @@ For example, imagine that you want to reward your users for reading articles on 
 ```ruby
 # app/models/user.rb
 class User < ActiveRecord::Base
-  has_many :scorings, as: :subjectable
+  rewardable
 end
 
 # app/models/article.rb
 class Article < ActiveRecord::Base
-  has_many :tasks, as: :taskable
+  taskable
 end
 
 # app/controllers/articles_controller.rb

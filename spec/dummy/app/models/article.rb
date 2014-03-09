@@ -1,3 +1,3 @@
-class Article < ActiveRecord::Base
-  has_many :tasks, as: :taskable
+class Article < ::ActiveRecord::Base
+  taskable
 end

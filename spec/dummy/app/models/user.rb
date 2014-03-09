@@ -1,3 +1,3 @@
-class User < ActiveRecord::Base
-  has_many :scorings, as: :subjectable
+class User < ::ActiveRecord::Base
+  rewardable
 end

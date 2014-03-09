@@ -58,7 +58,6 @@ class Article < ActiveRecord::Base
 end
 
 # app/controllers/articles_controller.rb
-
 class ArticlesController < AppliationController
   def read
     article = Article.find params[:id]
@@ -70,9 +69,10 @@ class ArticlesController < AppliationController
     redirect_to :back
   end
 end
+```
 
-# app/views/articles/show.html.erb
-
+```erb
+<!-- app/views/articles/show.html.erb -->
 <%= render @article %>
 
 <% if @article.tasks.any? %>
@@ -84,6 +84,7 @@ end
 <% else %>
   There is no reward for reading this article. Boo-hoo.
 <% end %>
+```
 
 ## Contributing
 

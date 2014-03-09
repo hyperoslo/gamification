@@ -7,11 +7,15 @@ module Gamification
 
       respond_to do |format|
         format.json { render json: {}, status: :created }
-        format.html { redirect_to params[:redirect_url] }
+        format.html { redirect_to redirect_url }
       end
     end
 
     private
+
+    def redirect_url
+      params[:redirect_url] || request.env['HTTP_REFERER']
+    end
 
     def taskable
       taskable_model.find scoring_params[:taskable_id]

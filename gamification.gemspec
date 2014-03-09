@@ -7,11 +7,11 @@ require "gamification/version"
 Gem::Specification.new do |s|
   s.name        = "gamification"
   s.version     = Gamification::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Gamification."
-  s.description = "TODO: Description of Gamification."
+  s.authors     = ["Johannes Gorset"]
+  s.email       = ["johannes@hyper.no"]
+  s.homepage    = "http://github.com/hyperoslo/gamification"
+  s.summary     = "Gamification is a collection of models for Ruby on Rails that allows you to make anything a game"
+  s.description = "Gamification is a collection of models for Ruby on Rails that allows you to make anything a game"
   s.license     = "MIT"
 
   s.files      = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

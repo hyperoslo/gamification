@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gamification (0.0.1)
+    gamification (0.0.2)
       rails (~> 4.1.0.rc1)
 
 GEM

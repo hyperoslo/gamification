@@ -29,7 +29,7 @@ module Gamification
       end
     end
 
-    describe 'complete_for' do
+    describe '#complete_for' do
       context 'for a task that is not yet completed' do
         before do
           expect(Scoring).to receive(:find_by).with(subjectable: subject).and_raise(ActiveRecord::RecordNotFound)

@@ -52,5 +52,26 @@ module Gamification
         expect(Task.complete_for(subject).count).to eq 2
       end
     end
+
+    describe '.completed_by' do
+      let!(:complete_task)   { create :gamification_task }
+      let!(:incomplete_task) { create :gamification_task }
+
+      before do
+        complete_task.complete_for subject
+      end
+
+      it 'returns completed tasks by a given subject' do
+        expect(Task.completed_by(subject).count).to eq 1
+      end
+    end
+
+    describe '.incomplete_by' do
+      let!(:incomplete_tasks) { create_list :gamification_task, 2 }
+
+      it 'returns incomplete tasks by a given subject' do
+        expect(Task.incomplete_by(subject).count).to eq 2
+      end
+    end
   end
 end

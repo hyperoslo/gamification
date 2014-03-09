@@ -5,6 +5,10 @@ module Gamification::Concerns::Models::Task
     belongs_to :taskable, polymorphic: true
     has_many :scorings
 
+    # TODO: These should be SQL. But that's hard.
+    scope :completed_by,  ->(subject) { all.select { |task| task.completed_by? subject }}
+    scope :incomplete_by, ->(subject) { all.reject { |task| task.completed_by? subject }}
+
     # Determine whether the given subject has completed the task.
     #
     # subject - An ActiveRecord model that can receive scorings.

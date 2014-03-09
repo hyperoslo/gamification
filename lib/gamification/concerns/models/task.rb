@@ -9,11 +9,7 @@ module Gamification::Concerns::Models::Task
     #
     # subject - An ActiveRecord model that can receive scorings.
     def completed_by? subject
-      scoring_for subject
-    rescue ::ActiveRecord::RecordNotFound
-      false
-    else
-      true
+      !!scoring_for(subject)
     end
 
     # Complete the task for the given subject.
@@ -33,7 +29,7 @@ module Gamification::Concerns::Models::Task
     #
     # subject - An ActiveRecord model that can receive scorings.
     def scoring_for subject
-      ::Gamification::Scoring.find_by subjectable: subject
+      scorings.find_by subjectable: subject
     end
 
     class Completed < StandardError; end

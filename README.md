@@ -30,19 +30,8 @@ Run the migrations:
 ## Usage
 
 Gamification really only has two models: `Task` and `Scoring`. A task has many scorings and a
-scoring belongs to a task. The rest is up to you.
-
-```ruby
-class Task
-  belongs_to :taskable, polymorphic: true
-  has_many :scorings
-end
-
-class Scoring
-  belongs_to :task
-  belongs_to :subjectable, polymorphic: true
-end
-```
+scoring belongs to a task. Simple. What your tasks are and who you will be rewarding is up
+to you.
 
 For example, imagine that you want to reward your users for reading articles on your site.
 
@@ -58,13 +47,17 @@ class Article < ActiveRecord::Base
 end
 ```
 
+`rewardable` declares that your model is eligible to receive rewards, whereas `taskable`
+declares that it has one.
+
 ```erb
 <!-- app/views/articles/show.html.erb -->
 <%= render @article %>
 <%= complete @article, for: current_user %>
 ```
 
-That's it. No, really, that's all there is to it.
+The `complete` helper renders a button towards the end of the article that you can click to
+receive your reward for reading it.
 
 ## Contributing
 

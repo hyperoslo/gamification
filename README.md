@@ -57,31 +57,11 @@ class Article < ActiveRecord::Base
   taskable
 end
 
-# app/controllers/articles_controller.rb
-class ArticlesController < AppliationController
-  def read
-    article = Article.find params[:id]
-
-    article.tasks.complete_for current_user
-
-    redirect_to :back
-  end
-end
-```
-
 ```erb
 <!-- app/views/articles/show.html.erb -->
 <%= render @article %>
 
-<% if @article.tasks.any? %>
-  <% if @article.tasks.all? { |task| task.completed_for? user } %>
-    You already read this article! High-five!
-  <% else %>
-    <%= link_to 'I read it, now give me my points!', read_article(@article) %>
-  <% end %>
-<% else %>
-  There is no reward for reading this article. Boo-hoo.
-<% end %>
+<%= complete @article, for: current_user %>
 ```
 
 ## Contributing

@@ -56,6 +56,7 @@ end
 class Article < ActiveRecord::Base
   taskable
 end
+```
 
 ```erb
 <!-- app/views/articles/show.html.erb -->

@@ -61,9 +61,10 @@ end
 ```erb
 <!-- app/views/articles/show.html.erb -->
 <%= render @article %>
-
 <%= complete @article, for: current_user %>
 ```
+
+That's it. No, really, that's all there is to it.
 
 ## Contributing
 

@@ -12,7 +12,7 @@ module Gamification
       redirect  = options[:redirect]
 
       form_tag Gamification::Engine.routes.url_helpers.rewards_path, method: :post do
-        concat hidden_field_tag 'scoring[rewarding_tyoe]', rewarding.class.name
+        concat hidden_field_tag 'scoring[rewarding_type]', rewarding.class.name
         concat hidden_field_tag 'scoring[rewarding_id]', rewarding.id
         concat hidden_field_tag 'scoring[rewardable_type]', rewardable.class.name
         concat hidden_field_tag 'scoring[rewardable_id]', rewardable.id

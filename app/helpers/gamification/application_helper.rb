@@ -1,8 +1,15 @@
 module Gamification
   module ApplicationHelper
-    def complete rewarding, options
-      rewardable = options[:for]
-      redirect   = options[:redirect]
+
+    # Create a form to reward someone for something.
+    #
+    # rewardable - A model that is rewardable (e.g. a user)
+    # options    - A Hash of options:
+    #              :for      - A model that is rewarding (e.g. an article)
+    #              :redirect - A String describing a URL to redirect to.
+    def reward rewardable, options
+      rewarding = options[:for]
+      redirect  = options[:redirect]
 
       form_tag Gamification::Engine.routes.url_helpers.rewards_path, method: :post do
         concat hidden_field_tag 'scoring[rewarding_tyoe]', rewarding.class.name

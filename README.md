@@ -53,10 +53,10 @@ declares that it has one.
 ```erb
 <!-- app/views/articles/show.html.erb -->
 <%= render @article %>
-<%= complete @article, for: current_user %>
+<%= reward current_user, for: @article %>
 ```
 
-The `complete` helper renders a button towards the end of the article that you can click to
+The `reward` helper renders a button towards the end of the article that you can click to
 receive your reward for reading it.
 
 ## Contributing

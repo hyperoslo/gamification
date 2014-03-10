@@ -1,3 +1,3 @@
 class Article < ::ActiveRecord::Base
-  taskable
+  rewarding
 end

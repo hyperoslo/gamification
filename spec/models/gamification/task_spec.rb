@@ -8,7 +8,7 @@ module Gamification
     describe '#completed_by?' do
       context 'for a task that is completed by the given subject' do
         before do
-          create :gamification_scoring, task: task, subjectable: subject
+          create :gamification_reward, task: task, rewardable: subject
         end
 
         it 'returns true' do
@@ -25,14 +25,14 @@ module Gamification
 
     describe '#complete_for' do
       context 'for a task that is not yet completed' do
-        it 'creates a scoring for the given subject' do
-          expect(task.complete_for subject).to be_instance_of Scoring
+        it 'creates a reward for the given subject' do
+          expect(task.complete_for subject).to be_instance_of Reward
         end
       end
 
       context 'for a task that is already completed' do
         before do
-          create :gamification_scoring, task: task, subjectable: subject
+          create :gamification_reward, task: task, rewardable: subject
         end
 
         it 'raises an error' do
@@ -45,10 +45,10 @@ module Gamification
       let!(:tasks) { create_list :gamification_task, 3 }
 
       before do
-        create :gamification_scoring, task: tasks.first, subjectable: subject
+        create :gamification_reward, task: tasks.first, rewardable: subject
       end
 
-      it 'creates scorings for tasks that were completed' do
+      it 'creates rewards for tasks that were completed' do
         expect(Task.complete_for(subject).count).to eq 2
       end
     end

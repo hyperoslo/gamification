@@ -1,4 +1,4 @@
 module Gamification::Concerns::Models
   require "gamification/concerns/models/task"
-  require "gamification/concerns/models/scoring"
+  require "gamification/concerns/models/reward"
 end

@@ -2,8 +2,8 @@ module Gamification::Concerns::Models::Task
   extend ActiveSupport::Concern
 
   included do
-    belongs_to :taskable, polymorphic: true
-    has_many :scorings
+    belongs_to :rewarding, polymorphic: true
+    has_many :rewards
 
     # TODO: These should be SQL. But that's hard.
     scope :completed_by,  ->(subject) { all.select { |task| task.completed_by? subject }}
@@ -11,19 +11,19 @@ module Gamification::Concerns::Models::Task
 
     # Determine whether the given subject has completed the task.
     #
-    # subject - An ActiveRecord model that can receive scorings.
+    # subject - An ActiveRecord model that can receive rewards.
     def completed_by? subject
       !!scoring_for(subject)
     end
 
     # Complete the task for the given subject.
     #
-    # subject - An ActiveRecord model that can receive scorings.
+    # subject - An ActiveRecord model that can receive rewards.
     def complete_for subject
       if completed_by? subject
         raise Completed, "Task is already completed for #{subject}"
       else
-        ::Gamification::Scoring.create! task: self, subjectable: subject
+        ::Gamification::Reward.create! task: self, rewardable: subject
       end
     end
 
@@ -31,9 +31,9 @@ module Gamification::Concerns::Models::Task
 
     # Find the Scoring for the given subject.
     #
-    # subject - An ActiveRecord model that can receive scorings.
+    # subject - An ActiveRecord model that can receive rewards.
     def scoring_for subject
-      scorings.find_by subjectable: subject
+      rewards.find_by rewardable: subject
     end
 
     class Completed < StandardError; end
@@ -42,7 +42,7 @@ module Gamification::Concerns::Models::Task
   module ClassMethods
     # Complete all tasks for the given subject.
     #
-    # subject - An ActiveRecord model that can receive scorings.
+    # subject - An ActiveRecord model that can receive rewards.
     def complete_for subject
       all.map { |task| task.complete_for subject unless task.completed_by? subject }.compact
     end

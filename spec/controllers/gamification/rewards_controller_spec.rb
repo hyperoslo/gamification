@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Gamification
-  describe ScoringsController do
+  describe RewardsController do
     routes { Gamification::Engine.routes }
 
     describe "POST 'create'" do
@@ -9,20 +9,20 @@ module Gamification
       let(:subject) { create :user }
 
       before do
-        create :gamification_task, taskable: article
+        create :gamification_task, rewarding: article
       end
 
       before do
         post 'create', redirect_url: 'http://example.org', scoring: {
-          taskable_type: article.class.name,
-          taskable_id: article.id,
-          subjectable_type: subject.class.name,
-          subjectable_id: subject.id
+          rewarding_type: article.class.name,
+          rewarding_id: article.id,
+          rewardable_type: subject.class.name,
+          rewardable_id: subject.id
         }
       end
 
-      it 'should create a scoring' do
-        expect(Scoring.count).to eq 1
+      it 'should create a reward' do
+        expect(Reward.count).to eq 1
       end
 
       it 'should redirect' do

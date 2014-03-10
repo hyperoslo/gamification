@@ -1,3 +1,3 @@
 Gamification::Engine.routes.draw do
-  resources :scorings, only: [:create]
+  resources :rewards, only: [:create]
 end

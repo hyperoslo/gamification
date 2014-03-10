@@ -43,11 +43,11 @@ end
 
 # app/models/article.rb
 class Article < ActiveRecord::Base
-  taskable
+  rewarding
 end
 ```
 
-`rewardable` declares that your model is eligible to receive rewards, whereas `taskable`
+`rewardable` declares that your model is eligible to receive rewards, whereas `rewarding`
 declares that it has one.
 
 ```erb

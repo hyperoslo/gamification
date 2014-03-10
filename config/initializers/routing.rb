@@ -1,4 +1,4 @@
-module KnowledgeBase
+module Gamification
   module ApplicationHelper
 
     # Knowledge base uses the layout of the client application, which causes Rails' url helpers to get confused

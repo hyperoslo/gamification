@@ -18,23 +18,23 @@ module Gamification
     end
 
     def rewarding
-      rewarding_model.find scoring_params[:rewarding_id]
+      rewarding_model.find reward_params[:rewarding_id]
     end
 
     def rewardable
-      rewardable_model.find scoring_params[:rewardable_id]
+      rewardable_model.find reward_params[:rewardable_id]
     end
 
     def rewarding_model
-      scoring_params[:rewarding_type].constantize
+      reward_params[:rewarding_type].constantize
     end
 
     def rewardable_model
-      scoring_params[:rewardable_type].constantize
+      reward_params[:rewardable_type].constantize
     end
 
-    def scoring_params
-      params.require(:scoring).permit(:rewarding_type, :rewarding_id, :rewardable_type, :rewardable_id)
+    def reward_params
+      params.require(:reward).permit(:rewarding_type, :rewarding_id, :rewardable_type, :rewardable_id)
     end
   end
 end

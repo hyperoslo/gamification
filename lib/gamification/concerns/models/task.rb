@@ -13,7 +13,7 @@ module Gamification::Concerns::Models::Task
     #
     # subject - An ActiveRecord model that can receive rewards.
     def completed_by? subject
-      !!scoring_for(subject)
+      !!reward_for(subject)
     end
 
     # Complete the task for the given subject.
@@ -32,7 +32,7 @@ module Gamification::Concerns::Models::Task
     # Find the Scoring for the given subject.
     #
     # subject - An ActiveRecord model that can receive rewards.
-    def scoring_for subject
+    def reward_for subject
       rewards.find_by rewardable: subject
     end
 

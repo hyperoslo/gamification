@@ -13,7 +13,7 @@ module Gamification
       end
 
       before do
-        post 'create', redirect_url: 'http://example.org', scoring: {
+        post 'create', redirect_url: 'http://example.org', reward: {
           rewarding_type: article.class.name,
           rewarding_id: article.id,
           rewardable_type: subject.class.name,

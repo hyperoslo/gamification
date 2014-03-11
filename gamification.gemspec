@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Gamification is a collection of models for Ruby on Rails that allows you to make anything a game"
   s.license     = "MIT"
 
-  s.files      = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files      = Dir["{app,config,db,lib}/**/*", "spec/factories/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.0"

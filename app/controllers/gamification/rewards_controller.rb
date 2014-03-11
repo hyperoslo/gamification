@@ -3,7 +3,11 @@ require_dependency "gamification/application_controller"
 module Gamification
   class RewardsController < ApplicationController
     def create
-      rewarding.tasks.complete_for rewardable
+      if rewarding.is_a? ::Gamification::Task
+        rewarding.complete_for rewardable
+      else
+        rewarding.tasks.complete_for rewardable
+      end
 
       respond_to do |format|
         format.json { render json: {}, status: :created }

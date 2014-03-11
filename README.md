@@ -57,7 +57,13 @@ declares that it has one.
 ```
 
 The `reward` helper renders a button towards the end of the article that you can click to
-receive your reward for reading it.
+receive your reward for reading it. If you pass it the article each of the tasks to read it
+will be rewarded, but you can also choose to only reward for a single task by passing that
+instead:
+
+```erb
+<%= reward current_user, for: @article.tasks.first %>
+```
 
 ## Contributing
 

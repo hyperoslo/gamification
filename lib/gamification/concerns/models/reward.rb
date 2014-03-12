@@ -6,5 +6,7 @@ module Gamification::Concerns::Models::Reward
     belongs_to :rewardable, polymorphic: true
 
     validates :rewardable_id, uniqueness: { scope: [:rewardable_type, :task] }
+
+    delegate :points, to: :task
   end
 end

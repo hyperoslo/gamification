@@ -29,8 +29,8 @@ Run the migrations:
 
 ## Usage
 
-Gamification really only has two models: `Task` and `Scoring`. A task has many scorings and a
-scoring belongs to a task. Simple. What your tasks are and who you will be rewarding is up
+Gamification really only has two models: `Task` and `Reward`. A task has many scorings and a
+reward belongs to a task. Simple. What your tasks are and who you will be rewarding is up
 to you.
 
 For example, imagine that you want to reward your users for reading articles on your site.
@@ -48,7 +48,17 @@ end
 ```
 
 `rewardable` declares that your model is eligible to receive rewards, whereas `rewarding`
-declares that it has one.
+declares that it has a reward.
+
+### Rewardable
+
+Rewardable models get a `has_many` relation to `Gamification::Reward`.
+
+### Rewarding
+
+Rewarding models get a `has_many` relation to `Gamification::Task`.
+
+### Helpers
 
 ```erb
 <!-- app/views/articles/show.html.erb -->
@@ -57,13 +67,8 @@ declares that it has one.
 ```
 
 The `reward` helper renders a button towards the end of the article that you can click to
-receive your reward for reading it. If you pass it the article each of the tasks to read it
-will be rewarded, but you can also choose to only reward for a single task by passing that
-instead:
-
-```erb
-<%= reward current_user, for: @article.tasks.first %>
-```
+receive your reward for reading it. If there are multiple taks for the same article, each of
+them will be rewarded.
 
 ## Configuration
 

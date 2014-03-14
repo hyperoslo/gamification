@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :gamification_medal, :class => 'Medal' do
+  factory :gamification_medal, :class => 'Gamification::Medal' do
     task nil
     name "MyString"
     image "MyString"

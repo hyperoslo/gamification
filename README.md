@@ -65,6 +65,16 @@ instead:
 <%= reward current_user, for: @article.tasks.first %>
 ```
 
+## Configuration
+
+Configure gamification in an initializer:
+
+```ruby
+Gamification.configure do |config|
+  config.storage = :file # Storage method for uploaded files. See CarrierWave for details.
+end
+```
+
 ## Contributing
 
 1. Fork it

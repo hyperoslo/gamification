@@ -2,6 +2,8 @@ PATH
   remote: .
   specs:
     gamification (0.0.2)
+      carrierwave (~> 0.10)
+      configatron (~> 3.0)
       rails (~> 4.0)
 
 GEM
@@ -42,6 +44,12 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+    configatron (3.0.1)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     factory_girl (4.4.0)

@@ -3,6 +3,7 @@ module Gamification::Concerns::Models::Task
 
   included do
     belongs_to :rewarding, polymorphic: true
+    has_one :medal
     has_many :rewards
 
     # TODO: These should be SQL. But that's hard.

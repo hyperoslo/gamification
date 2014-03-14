@@ -8,5 +8,6 @@ module Gamification::Concerns::Models::Reward
     validates :rewardable_id, uniqueness: { scope: [:rewardable_type, :task] }
 
     delegate :points, to: :task
+    delegate :medal, to: :task
   end
 end

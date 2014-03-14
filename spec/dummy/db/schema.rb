@@ -11,12 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310081749) do
+ActiveRecord::Schema.define(version: 20140313134259) do
 
   create_table "articles", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "gamification_medals", force: true do |t|
+    t.integer  "task_id"
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gamification_medals", ["task_id"], name: "index_gamification_medals_on_task_id"
 
   create_table "gamification_rewards", force: true do |t|
     t.integer  "task_id"

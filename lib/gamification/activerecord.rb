@@ -1,11 +1,11 @@
 module Gamification::ActiveRecord
   module Extensions
     def rewarding
-      has_many :tasks, class_name: '::Gamification::Task', as: :rewarding
+      include Gamification::Concerns::Rewarding
     end
 
     def rewardable
-      has_many :rewards, class_name: '::Gamification::Reward', as: :rewardable
+      include Gamification::Concerns::Rewardable
     end
   end
 end

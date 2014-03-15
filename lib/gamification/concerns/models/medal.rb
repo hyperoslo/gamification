@@ -5,7 +5,7 @@ module Gamification::Concerns::Models::Medal
   extend CarrierWave::Mount
 
   included do
-    belongs_to :task
+    belongs_to :goal
 
     mount_uploader :image, ImageUploader
   end

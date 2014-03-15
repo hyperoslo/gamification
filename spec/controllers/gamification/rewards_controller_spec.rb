@@ -5,12 +5,12 @@ module Gamification
     routes { Gamification::Engine.routes }
 
     describe "POST 'create'" do
-      context 'all tasks for a given rewardable' do
+      context 'all goals for a given rewardable' do
         let(:article) { create :article }
         let(:subject) { create :user }
 
         before do
-          create :gamification_task, rewarding: article
+          create :gamification_goal, rewarding: article
         end
 
         before do
@@ -31,14 +31,14 @@ module Gamification
         end
       end
 
-      context 'a single task' do
-        let(:task)    { create :gamification_task }
+      context 'a single goal' do
+        let(:goal)    { create :gamification_goal }
         let(:subject) { create :user }
 
         before do
           post 'create', redirect_url: 'http://example.org', reward: {
-            rewarding_type: task.class.name,
-            rewarding_id: task.id,
+            rewarding_type: goal.class.name,
+            rewarding_id: goal.id,
             rewardable_type: subject.class.name,
             rewardable_id: subject.id
           }

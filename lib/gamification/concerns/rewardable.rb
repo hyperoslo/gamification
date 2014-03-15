@@ -5,7 +5,7 @@ module Gamification::Concerns::Rewardable
     has_many :rewards, class_name: '::Gamification::Reward', as: :rewardable
 
     def medals
-      rewards.map(&:task).map(&:medal).flatten
+      rewards.map(&:goal).map(&:medal).flatten
     end
   end
 end

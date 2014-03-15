@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :gamification_medal, :class => 'Gamification::Medal' do
-    task nil
+    goal nil
     name "MyString"
     image "MyString"
   end

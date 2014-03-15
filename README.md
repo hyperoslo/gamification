@@ -29,9 +29,8 @@ Run the migrations:
 
 ## Usage
 
-Gamification really only has two models: `Task` and `Reward`. A task has many scorings and a
-reward belongs to a task. Simple. What your tasks are and who you will be rewarding is up
-to you.
+Gamification really only has two models: `Goal` and `Reward`. A goal has many rewards. Simple. What your
+goals are and who you will be rewarding is up to you.
 
 For example, imagine that you want to reward your users for reading articles on your site.
 
@@ -56,7 +55,7 @@ Rewardable models get a `has_many` relation to `Gamification::Reward`.
 
 ### Rewarding
 
-Rewarding models get a `has_many` relation to `Gamification::Task`.
+Rewarding models get a `has_many` relation to `Gamification::Goal`.
 
 ### Helpers
 
@@ -67,7 +66,7 @@ Rewarding models get a `has_many` relation to `Gamification::Task`.
 ```
 
 The `reward` helper renders a button towards the end of the article that you can click to
-receive your reward for reading it. If there are multiple taks for the same article, each of
+receive your reward(s) for reading it. If there are multiple goals for the same article, each of
 them will be rewarded.
 
 ## Configuration

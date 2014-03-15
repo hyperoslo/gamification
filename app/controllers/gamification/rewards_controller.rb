@@ -3,10 +3,10 @@ require_dependency "gamification/application_controller"
 module Gamification
   class RewardsController < ApplicationController
     def create
-      if rewarding.is_a? ::Gamification::Task
+      if rewarding.is_a? ::Gamification::Goal
         rewarding.complete_for rewardable
       else
-        rewarding.tasks.complete_for rewardable
+        rewarding.goals.complete_for rewardable
       end
 
       respond_to do |format|

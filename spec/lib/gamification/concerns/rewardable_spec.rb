@@ -4,10 +4,10 @@ describe Gamification::Concerns::Rewardable do
   describe '#medals' do
     let(:user)  { create :user }
     let(:medal) { create :gamification_medal }
-    let(:task)  { create :gamification_task, medal: medal }
+    let(:goal)  { create :gamification_goal, medal: medal }
 
     before do
-      create :gamification_reward, rewardable: user, task: task
+      create :gamification_reward, rewardable: user, goal: goal
     end
 
     it 'returns medals' do

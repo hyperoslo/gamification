@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :gamification_reward, :class => 'Gamification::Reward' do
-    task nil
+    goal nil
     rewardable nil
   end
 end

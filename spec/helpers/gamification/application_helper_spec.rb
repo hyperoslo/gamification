@@ -8,7 +8,7 @@ describe Gamification::ApplicationHelper do
     it 'renders a form' do
       form = Capybara.string reward user, for: article
 
-      expect(form).to have_button 'Complete tasks'
+      expect(form).to have_button 'Complete goals'
     end
   end
 end

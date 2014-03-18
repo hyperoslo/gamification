@@ -5,9 +5,16 @@ module Gamification::Concerns::Models::Reward
     belongs_to :goal, class_name: 'Gamification::Goal'
     belongs_to :rewardable, polymorphic: true
 
+    scope :unseen, -> { where seen_at: nil }
+    scope :seen, -> { where.not seen_at: nil }
+
     validates :rewardable_id, uniqueness: { scope: [:rewardable_type, :goal] }
 
     delegate :points, to: :goal
     delegate :medal, to: :goal
+
+    def seen?
+      !!seen_at
+    end
   end
 end

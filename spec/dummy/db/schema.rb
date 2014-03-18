@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315142524) do
+ActiveRecord::Schema.define(version: 20140318220723) do
 
   create_table "articles", force: true do |t|
     t.datetime "created_at"
@@ -45,10 +45,12 @@ ActiveRecord::Schema.define(version: 20140315142524) do
     t.string   "rewardable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "seen_at"
   end
 
   add_index "gamification_rewards", ["goal_id"], name: "index_gamification_rewards_on_goal_id"
   add_index "gamification_rewards", ["rewardable_id", "rewardable_type"], name: "index_gamification_scorings_on_subjectable"
+  add_index "gamification_rewards", ["seen_at"], name: "index_gamification_rewards_on_seen_at"
 
   create_table "users", force: true do |t|
     t.datetime "created_at"

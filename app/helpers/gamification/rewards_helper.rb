@@ -10,10 +10,12 @@ module Gamification
     def present_rewards options
       rewardable = options[:for]
 
-      #rewardable.rewards.unseen.each do |reward|
-      #  reward.seen_
+      rewards      = rewardable.rewards.unseen
+      presentation = render partial: 'gamification/rewards/presentation', collection: rewards, as: :reward
 
-      rewardable.rewards.unseen
+      rewards.see
+
+      presentation
     end
   end
 end

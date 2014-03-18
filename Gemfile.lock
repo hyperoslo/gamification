@@ -115,6 +115,7 @@ GEM
     thread_safe (0.2.0)
       atomic (>= 1.1.7, < 2)
     tilt (1.4.1)
+    timecop (0.7.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -133,3 +134,4 @@ DEPENDENCIES
   rails (= 4.1.0.rc1)
   rspec-rails
   sqlite3
+  timecop

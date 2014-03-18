@@ -20,6 +20,40 @@ module Gamification
       end
     end
 
+    describe '#see' do
+      let(:reward) { create :reward, seen_at: nil }
+
+      before do
+        reward.see
+      end
+
+      around do
+        Timecop.freeze
+      end
+
+      it 'should set seen_at to the current time' do
+        expect(reward.seen_at.utc.to_s).to eq Time.now.utc.to_s
+      end
+    end
+
+    describe '.see' do
+      let(:rewards) { create_list :reward, 3, seen_at: nil }
+
+      before do
+        rewards.see
+      end
+
+      around do
+        Timecop.freeze
+      end
+
+      it 'should set seen_at to the current time' do
+        rewards.each do |reward|
+          expect(reward.seen_at.utc.to_s).to eq Time.now.utc.to_s
+        end
+      end
+    end
+
     describe '#seen?' do
 
       context 'with a reward that has not been seen' do

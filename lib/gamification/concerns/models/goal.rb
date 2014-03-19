@@ -6,6 +6,8 @@ module Gamification::Concerns::Models::Goal
     has_one :medal
     has_many :rewards
 
+    accepts_nested_attributes_for :medal
+
     # TODO: These should be SQL. But that's hard.
     scope :completed_by,  ->(subject) { all.select { |goal| goal.completed_by? subject }}
     scope :incomplete_by, ->(subject) { all.reject { |goal| goal.completed_by? subject }}

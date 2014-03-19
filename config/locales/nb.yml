@@ -7,3 +7,6 @@ nb:
       gamification/reward:
         one: Belønning
         other: Belønninger
+      gamification/medal:
+        one: Medalje
+        other: Medaljer

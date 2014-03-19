@@ -1,0 +1,9 @@
+nb:
+  activerecord:
+    models:
+      gamification/goal:
+        one: Mål
+        other: Mål
+      gamification/reward:
+        one: Belønning
+        other: Belønninger

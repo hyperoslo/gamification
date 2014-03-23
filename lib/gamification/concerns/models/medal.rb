@@ -7,7 +7,7 @@ module Gamification
     included do
       belongs_to :goal
 
-      mount_uploader :image, ImageUploader
+      mount_uploader :image, ::Gamification::ImageUploader
     end
   end
 end

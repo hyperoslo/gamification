@@ -4,7 +4,7 @@ module Gamification::Concerns::Models::Goal
   included do
     belongs_to :rewarding, polymorphic: true
     has_one :medal
-    has_many :rewards
+    has_many :rewards, dependent: :destroy
 
     accepts_nested_attributes_for :medal, allow_destroy: true, reject_if: :all_blank
 

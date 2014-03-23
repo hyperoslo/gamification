@@ -1,11 +1,13 @@
 require 'carrierwave'
 
-module Gamification::Concerns::Models::Medal
-  extend ActiveSupport::Concern
+module Gamification
+  module Concerns::Models::Medal
+    extend ActiveSupport::Concern
 
-  included do
-    belongs_to :goal
+    included do
+      belongs_to :goal
 
-    mount_uploader :image, ImageUploader
+      mount_uploader :image, ImageUploader
+    end
   end
 end

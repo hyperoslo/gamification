@@ -11,11 +11,7 @@ module Gamification
     end
 
     def config
-      @config ||= Configatron::Store.new
-
-      @config.storage = :file
-
-      @config
+      @config ||= Configatron::Store.new storage: :file
     end
   end
 end

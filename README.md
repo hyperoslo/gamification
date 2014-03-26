@@ -71,11 +71,14 @@ them will be rewarded.
 
 ## Configuration
 
-Configure gamification in an initializer:
+If you don't want to save medals to disk, you will want to configure CarrierWave:
 
 ```ruby
-Gamification.configure do |config|
-  config.storage = :file # Storage method for uploaded files. See CarrierWave for details.
+# config/initializers/carrierwave.rb
+Carrierwave.configure do |config|
+  storage :fog
+
+  ...
 end
 ```
 

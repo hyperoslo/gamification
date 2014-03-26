@@ -3,9 +3,8 @@ require 'carrierwave'
 
 class Gamification::ImageUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
-  include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  # Include MiniMagick support
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage Gamification.config.storage

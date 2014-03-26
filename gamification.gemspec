@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.0"
   s.add_dependency "carrierwave", "~> 0.10"
   s.add_dependency "configatron", "~> 3.0"
-  s.add_dependency "rmagick"
+  s.add_dependency "mini_magick"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"

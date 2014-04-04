@@ -1,7 +1,7 @@
 # Gamification
 
-[![Code Climate](https://codeclimate.com/github/hyperoslo/gamification.png)](https://codeclimate.com/github/hyperoslo/gamification)
-[![Build Status](https://travis-ci.org/hyperoslo/gamification.png)](https://travis-ci.org/hyperoslo/gamification)
+[![Code Climate](https://img.shields.io/codeclimate/github/hyperoslo/gamification.svg)](https://codeclimate.com/github/hyperoslo/gamification)
+[![Build Status](https://img.shields.io/travis/hyperoslo/gamification.svg)](https://travis-ci.org/hyperoslo/gamification)
 
 Gamification is a collection of models for Ruby on Rails that allows you to make anything a game.
 

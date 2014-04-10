@@ -3,7 +3,7 @@ module Gamification::Concerns::Models::Reward
 
   included do
     belongs_to :goal, class_name: 'Gamification::Goal'
-    belongs_to :rewardable, polymorphic: true
+    belongs_to :rewardable, polymorphic: true, inverse_of: :rewards
 
     scope :unseen, -> { where seen_at: nil }
     scope :seen, -> { where.not seen_at: nil }

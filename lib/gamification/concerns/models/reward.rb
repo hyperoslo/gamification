@@ -8,6 +8,9 @@ module Gamification::Concerns::Models::Reward
     scope :unseen, -> { where seen_at: nil }
     scope :seen, -> { where.not seen_at: nil }
 
+    scope :with_medals,    -> { all.select &:medal }
+    scope :without_medals, -> { all.reject &:medal }
+
     validates :rewardable_id, uniqueness: { scope: [:rewardable_type, :goal] }
 
     delegate :points, to: :goal

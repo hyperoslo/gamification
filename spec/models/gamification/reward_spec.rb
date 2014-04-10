@@ -2,6 +2,32 @@ require 'spec_helper'
 
 module Gamification
   describe Reward do
+    describe '.with_medals' do
+      let!(:goal_with_medal)      { create :goal }
+      let!(:goal_without_medal)   { create :goal }
+      let!(:medal)                { create :medal, goal: goal_with_medal }
+
+      let!(:reward_with_medal)    { create :reward, goal: goal_with_medal }
+      let!(:reward_without_medal) { create :reward, goal: goal_without_medal }
+
+      it 'should return rewards with medals' do
+        expect(described_class.with_medals).to eq [reward_with_medal]
+      end
+    end
+
+    describe '.without_medals' do
+      let!(:goal_with_medal)      { create :goal }
+      let!(:goal_without_medal)   { create :goal }
+      let!(:medal)                { create :medal, goal: goal_with_medal }
+
+      let!(:reward_with_medal)    { create :reward, goal: goal_with_medal }
+      let!(:reward_without_medal) { create :reward, goal: goal_without_medal }
+
+      it 'should return rewards without medals' do
+        expect(described_class.without_medals).to eq [reward_without_medal]
+      end
+    end
+
     describe '.seen' do
       let(:seen_reward) { create :reward, seen_at: 2.days.ago }
       let(:unseen_reward) { create :reward, seen_at: nil }

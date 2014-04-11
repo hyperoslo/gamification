@@ -8,9 +8,7 @@ module Gamification
 
       it 'renders a partial' do
         expect(helper).to receive(:render) do |options|
-          expect(options[:partial]).to eq 'gamification/rewards/presentation'
-          expect(options[:collection].count).to eq 1
-          expect(options[:as]).to eq :reward
+          expect(options[:locals]).to eq rewards: [reward]
         end
 
         helper.present_rewards for: user

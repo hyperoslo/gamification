@@ -6,7 +6,7 @@ describe 'gamification/rewards/_presentation.html.erb' do
   let!(:medal)  { create :medal, goal: goal }
 
   before do
-    render partial: 'gamification/rewards/presentation', locals: { reward: reward }
+    render partial: 'gamification/rewards/presentation', locals: { rewards: [reward] }
   end
 
   it 'should contain the name of the medal' do

@@ -6,7 +6,9 @@ module Gamification
       if rewarding.is_a? ::Gamification::Goal
         rewarding.complete_for rewardable
       else
-        rewarding.goals.complete_for rewardable
+        rewarding.goals.each do |goal|
+          goal.complete_for rewardable
+        end
       end
 
       respond_to do |format|

@@ -41,18 +41,6 @@ module Gamification
       end
     end
 
-    describe '.complete_for' do
-      let!(:goals) { create_list :gamification_goal, 3 }
-
-      before do
-        create :gamification_reward, goal: goals.first, rewardable: subject
-      end
-
-      it 'creates rewards for goals that were completed' do
-        expect(Goal.complete_for(subject).count).to eq 2
-      end
-    end
-
     describe '.completed_by' do
       let!(:complete_goal)   { create :gamification_goal }
       let!(:incomplete_goal) { create :gamification_goal }

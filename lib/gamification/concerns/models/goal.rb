@@ -41,13 +41,4 @@ module Gamification::Concerns::Models::Goal
 
     class Completed < StandardError; end
   end
-
-  module ClassMethods
-    # Complete all goals for the given subject.
-    #
-    # subject - An ActiveRecord model that can receive rewards.
-    def complete_for subject
-      all.map { |goal| goal.complete_for subject unless goal.completed_by? subject }.compact
-    end
-  end
 end

@@ -1,11 +1,7 @@
-<div class="reward-presentation">
-  <% if reward.medal %>
-    <div class="medal">
-      <div class="image"><%= image_tag reward.medal.image %></div>
-      <div class="name"><%= reward.medal.name %></div>
-      <div class="description"><%= reward.medal.description %></div>
-    </div>
-  <% end %>
-
-  <div class="points"><%= reward.points %></div>
-</div>
+<% if rewards.any? %>
+  <div class="reward-presentation">
+    <% rewards.each do |reward| %>
+      <%= render reward %>
+    <% end %>
+  </div>
+<% end %>

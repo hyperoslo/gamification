@@ -9,9 +9,8 @@ module Gamification
     # Returns HTML.
     def present_rewards options
       rewardable = options[:for]
-
       rewards      = rewardable.rewards.unseen
-      presentation = render partial: 'gamification/rewards/presentation', collection: rewards, as: :reward
+      presentation = render partial: 'gamification/rewards/presentation', locals: { rewards: rewards }
 
       rewards.see
 

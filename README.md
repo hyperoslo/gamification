@@ -141,7 +141,7 @@ helper for presenting rewards to your users when they get them. It's sort of lik
 of Duty, except without Activision breathing down your neck and making you churn out the
 same software every year.
 
-```erb
+```ruby
 # app/views/layouts/application.html.erb
 <%= present_rewards for: current_user %>
 ```

@@ -134,6 +134,16 @@ class HattrickObserver < ActiveRecord::Observer
 end
 ```
 
+Some things are more difficult to award, though. In our example, you can't really tell whether
+a user has read an article. You'll just have to trust them, and make a button that they can
+click to confirm that they've read it:
+
+```ruby
+# app/views/articles/_article.html.erb
+<%= render @article %>
+<%= reward current_user, for: @article %>
+```
+
 ### Presenting rewards
 
 Rewards are no good if you don't know about them, though, and so we've made a pretty sweet

@@ -75,11 +75,15 @@ have a name, a description and an image. When a user completes a goal that has a
 they will receive that medal:
 
 ```ruby
-goal  = Gamification::Goal.create
-medal = Gamification::Medal.create name: 'Special Medal', description: 'You're special! In a good way!'
-user  = User.first
+user = User.first
+goal = Gamification::Goal.create
 
-goal.complete_for user
+goal.create_medal do |medal|
+  medal.name = 'Special Medal'
+  medal.description = 'You are special! In a good way!'
+end
+
+goal.complete_for User.first
 
 user.medals # => [<Medal>]
 ```

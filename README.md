@@ -138,7 +138,7 @@ Some things are more difficult to reward, though. In our example, you can't real
 a user has read an article. You'll just have to trust them, and make a button that they can
 click to confirm that they've read it:
 
-```ruby
+```
 # app/views/articles/_article.html.erb
 <%= render @article %>
 <%= reward current_user, for: @article %>
@@ -151,7 +151,7 @@ helper for presenting rewards to your users when they get them. It's sort of lik
 of Duty, except without Activision breathing down your neck and making you churn out the
 same software every year.
 
-```ruby
+```
 # app/views/layouts/application.html.erb
 <%= present_rewards for: current_user %>
 ```

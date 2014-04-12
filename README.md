@@ -149,7 +149,7 @@ click to confirm that they've read it:
 Rewards are no good if you don't know about them, though, and so we've made a pretty sweet
 helper for presenting rewards to your users when they get them. It's sort of like in Call
 of Duty, except without Activision breathing down your neck and making you churn out the
-same software every year.
+same title every year.
 
 ```
 # app/views/layouts/application.html.erb

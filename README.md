@@ -22,18 +22,16 @@ Or install it yourself as:
 
     $ gem install gamification
 
-Install the migrations:
+Install and run the migrations:
 
-    rake gamification:install:migrations
-
-Run the migrations:
-
-    rake db:migrate
+    $ rake gamification:install:migrations
+    $ rake db:migrate
 
 ## Usage
 
-Gamification really only has two models: `Goal` and `Reward`. A goal has many rewards. Simple. What your
-goals are and who you will be rewarding is up to you.
+Gamification consists of goals and rewards. A goal represents something that someone can do,
+and a reward represents someone doing that thing. Simple. What your goals are and who you will
+be giving rewards to is up to you.
 
 For example, imagine that you want to reward your users for reading articles on your site.
 
@@ -49,39 +47,111 @@ class Article < ActiveRecord::Base
 end
 ```
 
-`rewardable` declares that your model is eligible to receive rewards, whereas `rewarding`
-declares that it has a reward.
+`rewardable` declares that your users are eligible to receive rewards, whereas `rewarding`
+declares that your articles have a reward.
 
 ### Rewardable
 
-Rewardable models get a `has_many` relation to `Gamification::Reward`.
+Rewardable models get a `has_many` relation to `Gamification::Reward`:
+
+```ruby
+user = User.first
+user.rewards # => [<Reward>, <Reward>]
+```
 
 ### Rewarding
 
-Rewarding models get a `has_many` relation to `Gamification::Goal`.
+Rewarding models get a `has_many` relation to `Gamification::Goal`:
 
-### Helpers
-
-```erb
-<!-- app/views/articles/show.html.erb -->
-<%= render @article %>
-<%= reward current_user, for: @article %>
+```ruby
+article = Article.first
+article.goals # => [<Goal>, <Goal>]
 ```
 
-The `reward` helper renders a button towards the end of the article that you can click to
-receive your reward(s) for reading it. If there are multiple goals for the same article, each of
-them will be rewarded.
+### Medals
+
+Goals can have medals. Medals are a nice way to make someone feel extra special. They can
+have a name, a description and an image. When a user completes a goal that has a medal,
+they will receive that medal:
+
+```ruby
+goal  = Gamification::Goal.create
+medal = Gamification::Medal.create name: 'Special Medal', description: 'You're special! In a good way!'
+user  = User.first
+
+goal.complete_for user
+
+user.medals # => [<Medal>]
+```
+
+### Awarding rewards
+
+Since goals can be anything, it's up to you to write the logic for awarding them. We
+recommend using observers so you can keep it nice and isolated.
+
+Here's an observer that rewards a user for answering a question:
+
+```ruby
+# app/models/answer_observer.rb
+class AnswerObserver < ActiveRecord::Observer
+  observe Answer
+
+  def after_create(answer)
+    answer.question.goals.each do |goal|
+      goal.complete_for answer.user
+    end
+  end
+end
+```
+
+We like to use rewards for easter eggs. For example, here's an observer that
+rewards a user for logging in thrice:
+
+```ruby
+# app/easter_eggs/hattrick_observer.rb
+class HattrickObserver < ActiveRecord::Observer
+  observe User
+
+  def after_save(user)
+    if eligible? user
+      goal.complete_for user
+    end
+  end
+
+  private
+
+  def eligible?(user)
+    user.sign_in_count == 3
+  end
+
+  def goal
+    Goal.hattrick
+  end
+end
+```
+
+### Presenting rewards
+
+Rewards are no good if you don't know about them, though, and so we've made a pretty sweet
+helper for presenting rewards to your users when they get them. It's sort of like in Call
+of Duty, except without Activision breathing down your neck and making you churn out the
+same software every year.
+
+```erb
+# app/views/layouts/application.html.erb
+<%= present_rewards for: current_user %>
+```
 
 ## Configuration
 
-If you don't want to save medals to disk, you will want to configure CarrierWave:
+Medals have images, and Gamification uses [CarrierWave](https://github.com/carrierwaveuploader/carrierwave)
+to upload them. It defaults to saving images to disk, but if you'd rather save them to the
+cloud you'll have to configure it:
 
 ```ruby
 # config/initializers/carrierwave.rb
-Carrierwave.configure do |config|
+CarrierWave.configure do |config|
   storage :fog
-
-  ...
 end
 ```
 

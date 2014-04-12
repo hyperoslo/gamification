@@ -31,7 +31,7 @@ Install and run the migrations:
 
 Gamification consists of goals and rewards. A goal represents something that someone can do,
 and a reward represents someone doing that thing. Simple. What your goals are and who you will
-be giving rewards to is up to you.
+be rewarding is up to you.
 
 For example, imagine that you want to reward your users for reading articles on your site.
 

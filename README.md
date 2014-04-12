@@ -83,7 +83,7 @@ goal.create_medal do |medal|
   medal.description = 'You are special! In a good way!'
 end
 
-goal.complete_for User.first
+goal.complete_for user
 
 user.medals # => [<Medal>]
 ```

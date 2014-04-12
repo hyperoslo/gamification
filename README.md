@@ -134,7 +134,7 @@ class HattrickObserver < ActiveRecord::Observer
 end
 ```
 
-Some things are more difficult to award, though. In our example, you can't really tell whether
+Some things are more difficult to reward, though. In our example, you can't really tell whether
 a user has read an article. You'll just have to trust them, and make a button that they can
 click to confirm that they've read it:
 

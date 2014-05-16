@@ -24,7 +24,7 @@ module Gamification::Concerns::Models::Goal
     # subject - An ActiveRecord model that can receive rewards.
     def complete_for subject
       if completed_by? subject
-        raise Completed, "Task is already completed for #{subject}"
+        raise Completed, "#{self} is already completed for #{subject}"
       else
         ::Gamification::Reward.create! goal: self, rewardable: subject
       end

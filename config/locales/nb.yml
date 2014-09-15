@@ -10,3 +10,26 @@ nb:
       gamification/medal:
         one: Medalje
         other: Medaljer
+    attributes:
+      common: &common
+        created_at: Opprettet
+        updated_at: Sist oppdatert
+      gamification/goal:
+        <<: *common
+        rewarding: Mål for
+        rewarding_id: Mål for
+        rewarding_type: Mål for
+        points: Poeng
+      gamification/reward:
+        <<: *common
+        goal: Mål
+        rewardable: Mottaker
+        rewardable_id: Motakker
+        rewardable_type: Mottaker
+        seen_at: Sett
+      gamification/medal:
+        <<: *common
+        goal: Mål
+        name: Navn
+        image: Bilde
+        description: Beskrivelse

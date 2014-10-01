@@ -1,3 +1,42 @@
 en:
+  activerecord:
+    models:
+      gamification/goal:
+        one: Goal
+        other: Goals
+
+      gamification/medal:
+        one: Medal
+        other: Medals
+
+      gamification/reward:
+        one: Reward
+        other: Rewards
+
+    attributes:
+      common: &common
+        id: ID
+        created_at: Created at
+        updated_at: Updated at
+
+      gamification/goal:
+        <<: *common
+        medal: Medal
+        points: Points
+        rewarding: Rewarding
+        rewards: Rewards
+
+      gamification/medal:
+        <<: *common
+        description: Description
+        goal: Goal
+        image: Image
+
+      gamification/reward:
+        <<: *common
+        goal: Goal
+        rewardable: Receiver
+        seen_at: Seen at
+
   gamification:
-    complete: 'Complete goals'
+    complete: Complete goals

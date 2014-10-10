@@ -1,10 +1,10 @@
 # Gamification
 
-[![Gem Version](https://img.shields.io/gem/v/gamification.svg)](https://rubygems.org/gems/gamification)
-[![Build Status](https://img.shields.io/travis/hyperoslo/gamification.svg)](https://travis-ci.org/hyperoslo/gamification)
-[![Dependency Status](https://img.shields.io/gemnasium/hyperoslo/gamification.svg)](https://gemnasium.com/hyperoslo/gamification)
-[![Code Climate](https://img.shields.io/codeclimate/github/hyperoslo/gamification.svg)](https://codeclimate.com/github/hyperoslo/gamification)
-[![Coverage Status](https://img.shields.io/coveralls/hyperoslo/gamification.svg)](https://coveralls.io/r/hyperoslo/gamification)
+[![Gem Version](https://img.shields.io/gem/v/gamification.svg?style=flat)](https://rubygems.org/gems/gamification)
+[![Build Status](https://img.shields.io/travis/hyperoslo/gamification.svg?style=flat)](https://travis-ci.org/hyperoslo/gamification)
+[![Dependency Status](https://img.shields.io/gemnasium/hyperoslo/gamification.svg?style=flat)](https://gemnasium.com/hyperoslo/gamification)
+[![Code Climate](https://img.shields.io/codeclimate/github/hyperoslo/gamification.svg?style=flat)](https://codeclimate.com/github/hyperoslo/gamification)
+[![Coverage Status](https://img.shields.io/coveralls/hyperoslo/gamification.svg?style=flat)](https://coveralls.io/r/hyperoslo/gamification)
 
 Gamification is a collection of models for Ruby on Rails that allows you to make anything a game.
 

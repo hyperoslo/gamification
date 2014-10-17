@@ -12,6 +12,8 @@ module Gamification::Concerns::Models::Goal
     scope :completed_by,  ->(subject) { all.select { |goal| goal.completed_by? subject }}
     scope :incomplete_by, ->(subject) { all.reject { |goal| goal.completed_by? subject }}
 
+    validates :rewarding_type, :rewarding_id, :rewarding, presence: true
+
     # Determine whether the given subject has completed the goal.
     #
     # subject - An ActiveRecord model that can receive rewards.

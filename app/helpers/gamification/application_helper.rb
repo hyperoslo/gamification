@@ -16,6 +16,9 @@ module Gamification
         concat hidden_field_tag 'reward[rewarding_id]', rewarding.id
         concat hidden_field_tag 'reward[rewardable_type]', rewardable.class.name
         concat hidden_field_tag 'reward[rewardable_id]', rewardable.id
+        concat hidden_field_tag 'checksum', Checksum.generate(
+          [rewarding.class.name, rewarding.id, rewardable.class.name, rewardable.id]
+        )
 
         if redirect
           concat hidden_field_tag 'redirect_url', redirect

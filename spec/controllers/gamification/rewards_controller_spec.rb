@@ -5,6 +5,33 @@ module Gamification
     routes { Gamification::Engine.routes }
 
     describe "POST 'create'" do
+      context 'with an invalid checksum' do
+        let(:article) { create :article }
+        let(:subject) { create :user }
+
+        before do
+          create :gamification_goal, rewarding: article
+        end
+
+        before do
+          post 'create', redirect_url: 'http://example.org', reward: {
+            rewarding_type: article.class.name,
+            rewarding_id: article.id,
+            rewardable_type: subject.class.name,
+            rewardable_id: subject.id
+          },
+          checksum: 'tampered'
+        end
+
+        it 'should not create a reward' do
+          expect(Reward.count).to eq 0
+        end
+
+        it 'should respond with forbidden' do
+          expect(response).to be_forbidden
+        end
+      end
+
       context 'all goals for a given rewardable' do
         let(:article) { create :article }
         let(:subject) { create :user }
@@ -19,7 +46,8 @@ module Gamification
             rewarding_id: article.id,
             rewardable_type: subject.class.name,
             rewardable_id: subject.id
-          }
+          },
+          checksum: Checksum.generate([article.class.name, article.id, subject.class.name, subject.id])
         end
 
         it 'should create a reward' do
@@ -40,8 +68,9 @@ module Gamification
             rewarding_type: goal.class.name,
             rewarding_id: goal.id,
             rewardable_type: subject.class.name,
-            rewardable_id: subject.id
-          }
+            rewardable_id: subject.id,
+          },
+          checksum: Checksum.generate([goal.class.name, goal.id, subject.class.name, subject.id])
         end
 
         it 'should create a reward' do

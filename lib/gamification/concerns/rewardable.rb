@@ -6,7 +6,7 @@ module Gamification::Concerns::Rewardable
     has_many :goals, through: :rewards, class_name: '::Gamification::Goal'
 
     def medals
-      rewards.map(&:goal).map(&:medal).flatten
+      rewards.includes(goal: :medal).collect(&:medal).compact!
     end
   end
 end

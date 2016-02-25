@@ -7,14 +7,28 @@ describe Gamification::Concerns::Rewardable do
     let(:goal)  { create :gamification_goal, medal: medal }
     let(:goal_without_medal)  { create :gamification_goal }
 
-    describe "when medals earned" do
-      before do
-        create :gamification_reward, rewardable: user, goal: goal
-        create :gamification_reward, rewardable: user, goal: goal_without_medal
-      end
+    context "when there is goal without medal" do
+      describe "when medals earned" do
+        before do
+          create :gamification_reward, rewardable: user, goal: goal
+          create :gamification_reward, rewardable: user, goal: goal_without_medal
+        end
 
-      it 'returns medals' do
-        expect(user.medals).to eq [medal]
+        it 'returns medals' do
+          expect(user.medals).to eq [medal]
+        end
+      end
+    end
+
+    context "when goals have medal" do
+      describe "when medals earned" do
+        before do
+          create :gamification_reward, rewardable: user, goal: goal
+        end
+
+        it 'returns medals' do
+          expect(user.medals).to eq [medal]
+        end
       end
     end
 

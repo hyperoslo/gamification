@@ -4,7 +4,7 @@ module Gamification
 
     initializer 'gamification.action_controller' do |app|
       ActiveSupport.on_load :action_controller do
-        helper Gamification::ApplicationHelper
+        helper Gamification::ApplicationHelper if defined?(helper)
       end
     end
 

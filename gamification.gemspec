@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files      = Dir["{app,config,db,lib}/**/*", "spec/factories/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "rails", "~> 4.0"
+  s.add_dependency "rails", ">= 4.0"
   s.add_dependency "carrierwave", "~> 0.10"
   s.add_dependency "mini_magick", "~> 3.7"
 
